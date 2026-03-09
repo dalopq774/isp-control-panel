@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/styles.css" />
+    <title>Вход</title>
+  </head>
+  <body>
+    <img src="/img/background_auth.png" alt="" class="auth-img" />
+    <div class="auth">
+      <form class="auth-box" id="auth-form">
+        <label class="auth-title">Авторизация</label>
+        <div class="auth-login">
+          <label class="auth-label" for="auth-login">Логин</label>
+          <input
+            class="auth-input"
+            type="text"
+            name="user"
+            placeholder="Login"
+            id="auth-login"
+            autocomplete="username"
+            required
+          />
+        </div>
+        <div class="auth-password">
+          <label class="auth-label" for="auth-password">Пароль</label>
+          <input
+            class="auth-input"
+            type="password"
+            name="password"
+            placeholder="Password"
+            id="auth-password"
+            autocomplete="current-password"
+            required
+          />
+        </div>
+        <p id="error" class="auth-error"></p>
+        <button class="auth-button" type="submit" id="auth-button">Войти</button>
+      </form>
+    </div>
+    <script src="/js/auth.js"></script>
+  </body>
+</html>

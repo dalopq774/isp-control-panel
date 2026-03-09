@@ -1,0 +1,443 @@
+* {
+  box-sizing: border-box;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+body, html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* ── Фон ───────────────────────────────────────────── */
+.auth-img,
+.dashboard-img {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  z-index: -1;
+}
+
+/* ══ АВТОРИЗАЦИЯ ════════════════════════════════════ */
+.auth {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  margin-top: 15ch;
+}
+
+.auth-box {
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+  height: 600px;
+  background-color: white;
+  box-shadow: 0 0 15px 1px gray;
+  border-radius: 1px;
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+.auth-title {
+  margin-top: 20%;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.auth-login,
+.auth-password {
+  display: flex;
+  text-align: center;
+  flex-direction: column;
+  margin-top: 30px;
+}
+
+.auth input {
+  margin: 25px auto 0;
+  padding: 12px;
+  width: 50%;
+  font-size: 16px;
+  border: 1px solid #d1d5db;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.auth input:focus {
+  border-color: #2563eb;
+}
+
+.auth-error {
+  color: #dc2626;
+  font-size: 14px;
+  margin: 10px 0 0;
+  min-height: 20px;
+}
+
+.auth-button {
+  margin: 20px auto 0;
+  padding: 12px;
+  width: 50%;
+  cursor: pointer;
+  background-color: #2563eb;
+  color: white;
+  font-size: 16px;
+  border: none;
+  transition: background-color 0.2s;
+}
+
+.auth-button:hover  { background-color: #1d4ed8; }
+.auth-button:disabled { background-color: #93c5fd; cursor: not-allowed; }
+
+/* ══ ДАШБОРД ════════════════════════════════════════ */
+.dashboard {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  margin-top: 5ch;
+  overflow: auto;
+  max-height: 95vh;
+}
+
+.dashboard-box {
+  display: flex;
+  flex-direction: column;
+  width: 1200px;
+  min-height: 720px;
+  max-height: 88vh;
+  background-color: white;
+  box-shadow: 0 0 15px 1px gray;
+  border-radius: 1px;
+  overflow: hidden;
+}
+
+/* Заголовок дашборда */
+.dashboard-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 30px 0;
+}
+
+.dashboard-title {
+  font-size: 26px;
+  font-weight: bold;
+}
+
+.dashboard-user {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-size: 14px;
+  color: #555;
+}
+
+.logout-btn {
+  padding: 6px 16px;
+  background-color: #ef4444;
+  color: white;
+  text-decoration: none;
+  font-size: 14px;
+  border-radius: 2px;
+  transition: background-color 0.2s;
+}
+
+.logout-btn:hover { background-color: #dc2626; }
+
+/* Панель вкладок */
+.control-panel {
+  display: flex;
+  margin: 16px 0 0;
+  border-top: 1px solid #e5e7eb;
+  border-bottom: 1px solid #2563eb;
+}
+
+.tab-btn {
+  flex: 1;
+  cursor: pointer;
+  background-color: #f1f5f9;
+  color: #374151;
+  font-size: 15px;
+  border: none;
+  border-right: 1px solid #e5e7eb;
+  padding: 11px 0;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.tab-btn:last-child { border-right: none; }
+.tab-btn:hover      { background-color: #dbeafe; color: #1d4ed8; }
+.tab-btn.active     { background-color: #2563eb; color: white; }
+
+/* Контент */
+.dashboard-content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 0 10px 16px;
+}
+
+.tab-content      { display: none; }
+.tab-content.active { display: block; }
+
+.dashboard-item {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  margin: 20px 16px 0;
+}
+
+.section-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #1e3a8a;
+  margin-bottom: 12px;
+}
+
+.loading-text  { color: #6b7280; font-size: 14px; }
+.error-text    { color: #dc2626; font-size: 14px; }
+
+/* ── Сетевая инфо-сетка ─────────────────────────── */
+.info-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-width: 500px;
+}
+
+.info-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 12px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 3px;
+  font-size: 14px;
+}
+
+.info-key { color: #6b7280; }
+.info-val { font-weight: 600; }
+
+.dashboard-span-status { color: green; }
+.dashboard-span-ip     { color: #d97706; }
+
+/* ── Таблица логов ──────────────────────────────── */
+.auth-log-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  margin-top: 8px;
+}
+
+.auth-log-table th {
+  background: #2563eb;
+  color: white;
+  padding: 8px 12px;
+  text-align: left;
+}
+
+.auth-log-table td {
+  padding: 7px 12px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.auth-log-table tr:hover td { background: #f0f9ff; }
+.log-success { color: green; font-weight: 600; }
+.log-fail    { color: #dc2626; font-weight: 600; }
+
+/* ── Утилиты ────────────────────────────────────── */
+.utils-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.util-card {
+  padding: 14px 16px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 3px;
+}
+
+.util-label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 8px;
+}
+
+.util-row {
+  display: flex;
+  gap: 8px;
+}
+
+.util-input {
+  flex: 1;
+  padding: 8px 10px;
+  border: 1px solid #d1d5db;
+  font-size: 14px;
+  outline: none;
+}
+
+.util-input:focus { border-color: #2563eb; }
+
+.util-btn {
+  padding: 8px 16px;
+  background: #2563eb;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  white-space: nowrap;
+  transition: background-color 0.2s;
+}
+
+.util-btn:hover { background: #1d4ed8; }
+.util-btn.wide  { width: 100%; }
+
+.util-output-wrap {
+  border: 1px solid #e2e8f0;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.util-output-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #f1f5f9;
+  padding: 8px 12px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #374151;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.clear-btn {
+  background: none;
+  border: 1px solid #d1d5db;
+  cursor: pointer;
+  font-size: 12px;
+  padding: 3px 10px;
+  color: #6b7280;
+  border-radius: 2px;
+}
+
+.clear-btn:hover { background: #e5e7eb; }
+
+.util-output {
+  background: #1e293b;
+  color: #e2e8f0;
+  padding: 16px;
+  margin: 0;
+  min-height: 160px;
+  max-height: 260px;
+  overflow-y: auto;
+  font-size: 13px;
+  line-height: 1.6;
+  font-family: "Courier New", monospace;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+
+/* ── Рекомендации ───────────────────────────────── */
+#recommendations-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.rec-card {
+  padding: 14px 16px;
+  border-radius: 3px;
+  border-left: 4px solid #d1d5db;
+  background: #f8fafc;
+}
+
+.rec-card.priority-high   { border-left-color: #ef4444; }
+.rec-card.priority-medium { border-left-color: #f59e0b; }
+
+.rec-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 6px;
+}
+
+.rec-title {
+  font-weight: 600;
+  font-size: 14px;
+  color: #1e293b;
+}
+
+.rec-badge {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 10px;
+}
+
+.rec-badge.high   { background: #fee2e2; color: #dc2626; }
+.rec-badge.medium { background: #fef3c7; color: #d97706; }
+
+.rec-desc {
+  font-size: 13px;
+  color: #6b7280;
+  margin: 0;
+}
+
+/* ── Решение проблем ────────────────────────────── */
+#troubleshoot-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.trouble-card {
+  border: 1px solid #e2e8f0;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.trouble-header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  background: #f1f5f9;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  color: #1e293b;
+  text-align: left;
+  transition: background-color 0.2s;
+}
+
+.trouble-header:hover { background: #dbeafe; }
+.trouble-arrow { font-size: 12px; color: #6b7280; }
+
+.trouble-steps {
+  display: none;
+  padding: 0 16px;
+  background: white;
+}
+
+.trouble-steps.open { display: block; }
+
+.trouble-steps ol {
+  margin: 12px 0;
+  padding-left: 20px;
+}
+
+.trouble-steps li {
+  font-size: 13px;
+  color: #374151;
+  margin-bottom: 6px;
+  line-height: 1.5;
+}

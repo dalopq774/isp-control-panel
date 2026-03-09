@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/styles.css" />
+    <title>Панель управления</title>
+  </head>
+  <body>
+    <img src="/img/background_dashboard.png" alt="" class="dashboard-img" />
+    <div class="dashboard">
+      <div class="dashboard-box">
+
+        <div class="dashboard-header">
+          <label class="dashboard-title">Панель управления</label>
+          <div class="dashboard-user">
+            <span id="user-label">—</span>
+            <a href="/php/logout.php" class="logout-btn">Выйти</a>
+          </div>
+        </div>
+
+        <div class="control-panel">
+          <button class="tab-btn active" data-tab="network">Сеть</button>
+          <button class="tab-btn" data-tab="utils">Утилиты</button>
+          <button class="tab-btn" data-tab="recommendations">Рекомендации</button>
+          <button class="tab-btn" data-tab="troubleshoot">Решение проблем</button>
+        </div>
+
+        <div class="dashboard-content">
+
+          <!-- Вкладка: Сеть -->
+          <div class="tab-content active" id="tab-network">
+            <div class="dashboard-item" id="network-info">
+              <p class="loading-text">Загрузка данных...</p>
+            </div>
+            <div class="dashboard-item">
+              <label class="section-title">История входов</label>
+              <table class="auth-log-table" id="auth-log">
+                <thead>
+                  <tr><th>IP</th><th>Статус</th><th>Время</th></tr>
+                </thead>
+                <tbody id="auth-log-body">
+                  <tr><td colspan="3">Загрузка...</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Вкладка: Утилиты -->
+          <div class="tab-content" id="tab-utils">
+            <div class="dashboard-item">
+              <label class="section-title">Утилиты сети</label>
+              <div class="utils-grid">
+
+                <div class="util-card">
+                  <label class="util-label">Ping</label>
+                  <div class="util-row">
+                    <input class="util-input" type="text" id="ping-host" placeholder="google.com" value="google.com" />
+                    <button class="util-btn" id="ping-btn">Запустить</button>
+                  </div>
+                </div>
+
+                <div class="util-card">
+                  <label class="util-label">DNS Lookup</label>
+                  <div class="util-row">
+                    <input class="util-input" type="text" id="dns-host" placeholder="google.com" value="google.com" />
+                    <button class="util-btn" id="dns-btn">Найти</button>
+                  </div>
+                </div>
+
+                <div class="util-card">
+                  <label class="util-label">WHOIS</label>
+                  <div class="util-row">
+                    <input class="util-input" type="text" id="whois-host" placeholder="8.8.8.8" value="8.8.8.8" />
+                    <button class="util-btn" id="whois-btn">Запрос</button>
+                  </div>
+                </div>
+
+                <div class="util-card">
+                  <label class="util-label">Тест скорости</label>
+                  <div class="util-row">
+                    <button class="util-btn wide" id="speed-btn">Запустить тест</button>
+                  </div>
+                </div>
+
+              </div>
+
+              <div class="util-output-wrap">
+                <div class="util-output-header">
+                  <span id="util-output-title">Результат</span>
+                  <button class="clear-btn" id="clear-output">Очистить</button>
+                </div>
+                <pre class="util-output" id="util-output">Выберите утилиту и нажмите кнопку...</pre>
+              </div>
+            </div>
+          </div>
+
+          <!-- Вкладка: Рекомендации -->
+          <div class="tab-content" id="tab-recommendations">
+            <div class="dashboard-item">
+              <label class="section-title">Рекомендации по безопасности</label>
+              <div id="recommendations-list">
+                <p class="loading-text">Загрузка...</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Вкладка: Решение проблем -->
+          <div class="tab-content" id="tab-troubleshoot">
+            <div class="dashboard-item">
+              <label class="section-title">Решение типичных проблем</label>
+              <div id="troubleshoot-list">
+                <p class="loading-text">Загрузка...</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="/js/dashboard.js"></script>
+  </body>
+</html>
