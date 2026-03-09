@@ -74,6 +74,10 @@ http://localhost/mysite.local
 
 ---
 
+<img width="1920" height="955" alt="image" src="https://github.com/user-attachments/assets/4e593cb6-b4b2-4269-b077-452fb190cfc4" />
+<img width="1917" height="903" alt="image" src="https://github.com/user-attachments/assets/8af534dd-54cc-44e0-a818-389eea36f108" />
+<img width="1920" height="900" alt="image" src="https://github.com/user-attachments/assets/e0bd96d5-6ea1-48ed-8d21-41fe96432dd6" />
+
 ## ❓ Проблемы
 
 Ошибка "Not allowed to load local resource":
